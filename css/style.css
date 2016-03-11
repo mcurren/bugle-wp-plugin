@@ -1,0 +1,137 @@
+.bugle-box {
+  width: 100%;
+  clear: both;
+  font-size: 16px;
+  margin: 2em 0;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  background-color: DodgerBlue;
+  color: white;
+}
+
+.bugle-box *,
+.bugle-box *:before,
+.bugle-box *:after {
+  box-sizing: border-box;
+}
+
+.bugle-box__inside, .bugle-box__inside--gradient, .bugle-box__inside--pattern {
+  padding: 2em;
+  position: relative;
+}
+
+.bugle-box__inside--gradient {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.15)), color-stop(0.15, transparent), color-stop(0.85, transparent), to(rgba(0, 0, 0, 0.15)));
+}
+
+.bugle-box__inside--pattern {
+  background: radial-gradient(rgba(0, 0, 0, 0.1) 15%, transparent 16%) 0 0, radial-gradient(rgba(0, 0, 0, 0.1) 15%, transparent 16%) 8px 8px, radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 0 1px, radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 8px 9px;
+  background-size: 16px 16px;
+}
+
+.bugle-box__inside:before, .bugle-box__inside--gradient:before, .bugle-box__inside--pattern:before, .bugle-box__inside:after, .bugle-box__inside--gradient:after, .bugle-box__inside--pattern:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.bugle-box__extra-bg {
+  position: absolute;
+  width: 40%;
+  height: 200%;
+  right: -10%;
+  bottom: -100%;
+  -webkit-transform-origin: right top;
+          transform-origin: right top;
+  -webkit-transform: rotate(13deg);
+          transform: rotate(13deg);
+  background: url(../img/Carina_Nebula.jpg) 50% 50% no-repeat;
+  background-size: cover;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.bugle-box__call--offset {
+  display: inline-block;
+  vertical-align: middle;
+  width: 70%;
+  padding-top: 1em;
+}
+
+.bugle-box__call__head {
+  margin-bottom: 0.75em;
+}
+
+.bugle-box__call__head > h2 {
+  font-size: 1.8em;
+  line-height: 1.3em;
+  margin: 0;
+  padding: 0;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35);
+}
+
+.bugle-box__call__tag {
+  margin-bottom: 1em;
+}
+
+.bugle-box__call__tag > h3 {
+  font-size: 1.2em;
+  line-height: 1.4em;
+  margin: 0;
+  padding: 0;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35);
+}
+
+.bugle-box__action--offset {
+  display: inline-block;
+  vertical-align: middle;
+  width: 29%;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.bugle-box__action--offset > .bugle-box__button, .bugle-box__action--offset > .bugle-box__button--bevel {
+  display: block;
+  font-size: 1.2em;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.bugle-box__button, .bugle-box__button--bevel {
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 1em 2.5em;
+  background: #FF4500;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+  color: white;
+  border-radius: 3px;
+}
+
+.bugle-box__button:hover, .bugle-box__button--bevel:hover {
+  color: inherit;
+  background: #e63e00;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+.bugle-box__button--bevel {
+  background-color: #ee432e;
+  background-image: linear-gradient(to bottom, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+  border: 1px solid #951100;
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+  color: #fff;
+  text-align: center;
+}
+
+.bugle-box__button--bevel:hover {
+  background-color: #f37873;
+  background-image: linear-gradient(to bottom, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+  box-shadow: none;
+}
+
+/*# sourceMappingURL=style.css.map */

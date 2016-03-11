@@ -1,0 +1,200 @@
+// =======
+// Mixins
+// ====
+
+// BEM element() mixin
+@mixin element($name) {
+  @at-root {
+    #{&}__#{$name} {
+      @content;
+    }
+  }
+}
+
+// BEM modifier() mixin
+@mixin modifier($name) {
+  @at-root {
+    // '&' is a double-wrapped list
+    $selector: nth(&, 1);
+    // direct parent will be the last item in that list
+    $direct-parent: nth($selector, length($selector));
+    // modifier should have all properties of parent
+    #{$direct-parent}--#{$name} { @extend #{$direct-parent} !optional; }
+    // '@content' will be in a nested selector however, if that is the context
+    #{&}--#{$name} { @content; }
+  }
+}
+
+// =======
+// Styles
+// ====
+
+.bugle-box {
+	width: 100%;
+	clear: both;
+	font-size: 16px;
+	margin: 2em 0;
+	overflow: hidden;
+	position: relative;
+		
+	// ### REPLACE WITH PLUGIN SETTINGS ###
+	text-align: center;
+	background-color: DodgerBlue;
+	color: white;
+
+	*, 
+	*:before, 
+	*:after {
+  	box-sizing: border-box;
+	}
+
+	@include element('inside') {
+		padding: 2em;
+		position: relative;
+
+		@include modifier('gradient') {
+			$gradient-light: rgba(black, 0);
+			$gradient-dark: rgba(black, 0.15);
+			background: -webkit-gradient(
+				linear, 
+				left top, 
+				left bottom, 
+				from($gradient-dark), 
+				color-stop(0.15, $gradient-light), 
+				color-stop(0.85, $gradient-light), 
+				to($gradient-dark)
+			);
+		}
+
+		@include modifier('pattern') {
+			background:
+				radial-gradient(rgba(black, 0.1) 15%, transparent 16%) 0 0,
+				radial-gradient(rgba(black, 0.1) 15%, transparent 16%) 8px 8px,
+				radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+				radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+			background-size:16px 16px;
+			// background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHElEQVQIW2NkYGCQZGBgeM4ABYwwBjYBsEoMFQBPtgIFDYqfOAAAAABJRU5ErkJggg==) repeat;
+		}
+
+		&:before, 
+		&:after {
+			content: '';
+			display: table;
+			clear: both;
+		}
+	}
+
+	@include element('extra-bg') {
+		position: absolute;
+		width: 40%;
+		height: 200%;
+		right: -10%;
+		bottom: -100%;
+		transform-origin: right top;
+		transform: rotate(13deg);
+		background: url(../img/Carina_Nebula.jpg) 50% 50% no-repeat;
+		background-size: cover;
+		box-shadow: inset 0 0 15px rgba(black, 0.5);
+	}
+
+	@include element('call') {
+
+		@include modifier('offset') {
+			display: inline-block;
+			vertical-align: middle;
+			width: 70%;
+			padding-top: 1em;
+		}
+
+		@include element('head') {
+			margin-bottom: 0.75em;
+
+			> h2 {
+				font-size: 1.8em;
+				line-height: 1.3em;
+				margin: 0;
+				padding: 0;
+				text-shadow: 1px 1px 1px rgba(black, 0.35);
+			}
+		}
+
+		@include element('tag') {
+			margin-bottom: 1em;
+
+			> h3 {
+				font-size: 1.2em;
+				line-height: 1.4em;
+				margin: 0;
+				padding: 0;
+				text-shadow: 1px 1px 1px rgba(black, 0.35);
+			}
+		}
+	}// .bugle-box__call
+
+	@include element('action') {
+
+		@include modifier('offset') {
+			display: inline-block;
+			vertical-align: middle;
+			width: 29%; // Why doesn't this div sit side-by-side with adjacent div at 30%?
+			padding-left: 2em;
+			padding-right: 2em;
+
+			> .bugle-box__button {
+				display: block;
+				font-size: 1.2em;
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}// .bugle-box__action
+
+	@include element('button') {
+		text-decoration: none;
+		// text-transform: uppercase;
+		font-weight: 500;
+		letter-spacing: 0.05em;
+		// text-shadow: 1px 1px 1px rgba(black, 0.35);
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8);
+		cursor: pointer;
+
+		// ### REPLACE WITH PLUGIN SETTINGS ###
+		$button-background: #FF4500;
+		display: inline-block;
+		margin: 0 auto;
+		padding: 1em 2.5em;
+		background: $button-background;
+		box-shadow: 0 0 0 3px rgba(white, 0.25);
+		color: white;
+		border-radius: 3px;
+
+		&:hover {
+			color: inherit;
+
+			// ### REPLACE WITH PLUGIN SETTINGS ###
+			background: darken($button-background, 5%);
+			box-shadow: 0 0 0 3px rgba(white, 0.5);
+		}
+
+		@include modifier('bevel') {
+			background-color: #ee432e;
+	    background-image: linear-gradient(to bottom, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+	    border: 1px solid #951100;
+	    border-radius: 5px;
+	    -webkit-box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+	    box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+	    color: #fff;
+	    // font: bold 20px/1 "helvetica neue", helvetica, arial, sans-serif;
+	    // padding: 12px 0 14px 0;
+	    text-align: center;
+	    // width: 150px;
+
+	    &:hover {
+	    	background-color: #f37873;
+    		background-image: linear-gradient(to bottom, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+    		box-shadow: none;
+	    }
+		}
+	}// .bugle-box__button
+
+}// .bugle-box

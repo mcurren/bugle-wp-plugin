@@ -1,0 +1,32 @@
+{
+  "name": "bugle-wp-plugin",
+  "version": "1.0.0",
+  "description": "A plugin to add a call to action box at the bottom of every page.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcurren/bugle-wp-plugin.git"
+  },
+  "keywords": [
+    "CTA",
+    "Wordpress"
+  ],
+  "author": "Mike Curren",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/mcurren/bugle-wp-plugin/issues"
+  },
+  "homepage": "https://github.com/mcurren/bugle-wp-plugin#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.3.3",
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-postcss": "^6.1.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0"
+  }
+}
